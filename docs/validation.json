@@ -1,0 +1,610 @@
+{
+  "tested_platform": "Native Ubuntu 22.04 x86_64, ROS 2 Humble, OpenGL",
+  "vm_tested": false,
+  "graphics_pipeline": "Unity built-in",
+  "unity_version": "2022.3.52f1",
+  "limitations": [
+    "No fresh OS or VM installation was tested on the instructor host.",
+    "Rates depend on virtual graphics and CPU resources.",
+    "The local practice kit is not a secure multi-team competition boundary."
+  ],
+  "command_interface": {
+    "type": "ackermann_msgs/msg/AckermannDriveStamped",
+    "topics": [
+      "/car_1/drive",
+      "/car_2/drive"
+    ],
+    "speed": "drive.speed, m/s, forward only",
+    "steering": "drive.steering_angle, radians, positive left",
+    "steering_independent_of_speed": true,
+    "optional_rate_acceleration_jerk_fields": "must remain zero",
+    "timeout_seconds": 0.25
+  },
+  "odometry": {
+    "pose_frames": [
+      "car_1/odom",
+      "car_2/odom"
+    ],
+    "child_frames": [
+      "car_1/base_link",
+      "car_2/base_link"
+    ],
+    "global_frame": "map",
+    "tf_chain": [
+      "map",
+      "car_N/odom",
+      "car_N/base_link"
+    ],
+    "origin": "first accepted simulator position and heading after startup/reset",
+    "origin_fixed_within_epoch": true,
+    "z_axis_aligned_with_map": true,
+    "body_roll_and_pitch_retained": true,
+    "velocity_frame": "car_N/base_link",
+    "simulation_time_continuous_across_reset": true,
+    "initial_settling_note": "First pose is local zero; suspension settling causes about 2 mm of subsequent horizontal movement in this test.",
+    "ground_truth": true,
+    "integrated_wheel_odometry": false
+  },
+  "release": "2026-11-18",
+  "revision": "mapped-static-obstacles",
+  "created_utc": "2026-11-18T15:42:08.746271+00:00",
+  "track_sha256": "fb418feb6382bc91953d7a5a59de8aaa69d9e11bc11c3ac7dafdf1f23523cd77",
+  "unity_build": {
+    "unity_version": "2022.3.52f1",
+    "scripting_backend": "mono",
+    "render_pipeline": "builtin",
+    "built_utc": "2026-11-18T15:27:59.3408110Z",
+    "result": "Succeeded",
+    "tracks": [
+      "default",
+      "f1_esp",
+      "f1_esp_training"
+    ],
+    "track_sha256": {
+      "default": "7769cb924a3f0f7f27bfb10c59bd8df10c75f03dcb248076e2f281341dc001df",
+      "f1_esp": "abede82227874b59d9c3971294c286796c4c54ce859eda0df6cdd19facd79baa",
+      "f1_esp_training": "fb418feb6382bc91953d7a5a59de8aaa69d9e11bc11c3ac7dafdf1f23523cd77"
+    }
+  },
+  "unit_and_integration_tests": {
+    "passed": 17,
+    "suites": [
+      "tests/test_static_obstacles.py",
+      "tests/test_student_kit.py"
+    ],
+    "a_star_routes_beyond_all_12_blocks": true,
+    "fixed_layout_reproducible": true
+  },
+  "static_obstacle_layout": {
+    "seed": 42,
+    "count": 12,
+    "vehicle_envelope_m": [
+      0.7,
+      0.4
+    ],
+    "footprint_margin_m": 0.15,
+    "minimum_extra_map_clearance_m": 0.10606601717798216,
+    "maximum_witness_curvature_per_m": 1.2420770536089512,
+    "static_cells": 2343,
+    "centerline_sha256": "9676727691cba2105aee43eaadc08365814950c499fb751732e99ea9bf483412"
+  },
+  "static_obstacle_check": {
+    "passed": true,
+    "checks": {
+      "ros_map_matches_baked_map": true,
+      "all_12_boxes_are_immovable_colliders": true,
+      "static_obstacle_01_pose_and_size_match": true,
+      "static_obstacle_02_pose_and_size_match": true,
+      "static_obstacle_03_pose_and_size_match": true,
+      "static_obstacle_04_pose_and_size_match": true,
+      "static_obstacle_05_pose_and_size_match": true,
+      "static_obstacle_06_pose_and_size_match": true,
+      "static_obstacle_07_pose_and_size_match": true,
+      "static_obstacle_08_pose_and_size_match": true,
+      "static_obstacle_09_pose_and_size_match": true,
+      "static_obstacle_10_pose_and_size_match": true,
+      "static_obstacle_11_pose_and_size_match": true,
+      "static_obstacle_12_pose_and_size_match": true,
+      "automatic_obstacles_still_have_a_valid_route": true,
+      "temporary_obstacle_can_spawn_with_static_layout": true,
+      "temporary_clear_keeps_static_map": true,
+      "static_obstacle_01_visible_in_ros_lidar": true,
+      "static_obstacle_01_visible_in_ros_camera": true,
+      "static_obstacle_02_visible_in_ros_lidar": true,
+      "static_obstacle_02_visible_in_ros_camera": true,
+      "static_obstacle_01_passed_without_contact": true,
+      "static_obstacle_02_passed_without_contact": true,
+      "static_obstacle_03_visible_in_ros_lidar": true,
+      "static_obstacle_03_visible_in_ros_camera": true,
+      "static_obstacle_04_visible_in_ros_lidar": true,
+      "static_obstacle_04_visible_in_ros_camera": true,
+      "static_obstacle_03_passed_without_contact": true,
+      "static_obstacle_04_passed_without_contact": true,
+      "static_obstacle_05_visible_in_ros_lidar": true,
+      "static_obstacle_05_visible_in_ros_camera": true,
+      "static_obstacle_06_visible_in_ros_lidar": true,
+      "static_obstacle_06_visible_in_ros_camera": true,
+      "static_obstacle_05_passed_without_contact": true,
+      "static_obstacle_06_passed_without_contact": true,
+      "static_obstacle_07_visible_in_ros_lidar": true,
+      "static_obstacle_07_visible_in_ros_camera": true,
+      "static_obstacle_08_visible_in_ros_lidar": true,
+      "static_obstacle_08_visible_in_ros_camera": true,
+      "static_obstacle_07_passed_without_contact": true,
+      "static_obstacle_08_passed_without_contact": true,
+      "static_obstacle_09_visible_in_ros_lidar": true,
+      "static_obstacle_09_visible_in_ros_camera": true,
+      "static_obstacle_10_visible_in_ros_lidar": true,
+      "static_obstacle_10_visible_in_ros_camera": true,
+      "static_obstacle_09_passed_without_contact": true,
+      "static_obstacle_10_passed_without_contact": true,
+      "static_obstacle_11_visible_in_ros_lidar": true,
+      "static_obstacle_11_visible_in_ros_camera": true,
+      "static_obstacle_12_visible_in_ros_lidar": true,
+      "static_obstacle_12_visible_in_ros_camera": true,
+      "static_obstacle_11_passed_without_contact": true,
+      "static_obstacle_12_passed_without_contact": true,
+      "permanent_box_causes_physical_contact": true,
+      "contact_identifies_permanent_box": true,
+      "static_box_persists_at_same_pose_after_contact_and_reset": true,
+      "static_occupancy_persists_after_reset": true
+    },
+    "blocks": {
+      "static_obstacle_01": {
+        "lidar_returns": 38,
+        "blue_camera_pixels": 31693,
+        "maximum_tracking_error_m": 0.06643016756896128
+      },
+      "static_obstacle_02": {
+        "lidar_returns": 46,
+        "blue_camera_pixels": 31304,
+        "maximum_tracking_error_m": 0.06473835838828511
+      },
+      "static_obstacle_03": {
+        "lidar_returns": 52,
+        "blue_camera_pixels": 29143,
+        "maximum_tracking_error_m": 0.10831909619167238
+      },
+      "static_obstacle_04": {
+        "lidar_returns": 32,
+        "blue_camera_pixels": 31430,
+        "maximum_tracking_error_m": 0.06317737811084202
+      },
+      "static_obstacle_05": {
+        "lidar_returns": 40,
+        "blue_camera_pixels": 30520,
+        "maximum_tracking_error_m": 0.07582684378756054
+      },
+      "static_obstacle_06": {
+        "lidar_returns": 43,
+        "blue_camera_pixels": 31051,
+        "maximum_tracking_error_m": 0.058708475731399444
+      },
+      "static_obstacle_07": {
+        "lidar_returns": 42,
+        "blue_camera_pixels": 31368,
+        "maximum_tracking_error_m": 0.11317540037313786
+      },
+      "static_obstacle_08": {
+        "lidar_returns": 37,
+        "blue_camera_pixels": 31541,
+        "maximum_tracking_error_m": 0.06098020048064737
+      },
+      "static_obstacle_09": {
+        "lidar_returns": 37,
+        "blue_camera_pixels": 31305,
+        "maximum_tracking_error_m": 0.05971829714392582
+      },
+      "static_obstacle_10": {
+        "lidar_returns": 46,
+        "blue_camera_pixels": 33826,
+        "maximum_tracking_error_m": 0.06902605667427403
+      },
+      "static_obstacle_11": {
+        "lidar_returns": 35,
+        "blue_camera_pixels": 31345,
+        "maximum_tracking_error_m": 0.05871375217280794
+      },
+      "static_obstacle_12": {
+        "lidar_returns": 53,
+        "blue_camera_pixels": 30495,
+        "maximum_tracking_error_m": 0.0784581587981749
+      }
+    },
+    "build": {
+      "unity_version": "2022.3.52f1",
+      "scripting_backend": "mono",
+      "render_pipeline": "builtin",
+      "built_utc": "2026-11-18T15:27:59.3408110Z",
+      "result": "Succeeded",
+      "tracks": [
+        "default",
+        "f1_esp",
+        "f1_esp_training"
+      ],
+      "track_sha256": {
+        "default": "7769cb924a3f0f7f27bfb10c59bd8df10c75f03dcb248076e2f281341dc001df",
+        "f1_esp": "abede82227874b59d9c3971294c286796c4c54ce859eda0df6cdd19facd79baa",
+        "f1_esp_training": "fb418feb6382bc91953d7a5a59de8aaa69d9e11bc11c3ac7dafdf1f23523cd77"
+      }
+    },
+    "domain": 31
+  },
+  "control_check": {
+    "passed": true,
+    "checks": {
+      "no_checkpoint_or_path_publishers": true,
+      "no_automatic_driving_publishers": true,
+      "both_status_interfaces": true,
+      "both_commands_use_ackermann": true,
+      "legacy_command_topics_absent": true,
+      "both_odometry_frames_are_local": true,
+      "reset_initializes_local_xy_near_zero": true,
+      "stationary_without_commands": true,
+      "two_car_grid_clearance": true,
+      "lidar_1_5m_limit": true,
+      "lidar_1_open_straight_has_no_false_wall": true,
+      "lidar_2_5m_limit": true,
+      "lidar_2_open_straight_has_no_false_wall": true,
+      "lidar_1_self_excluded": true,
+      "lidar_1_sees_peer": true,
+      "lidar_2_sees_peer": true,
+      "lidar_2_self_excluded": true,
+      "car_1_accepts_drive": true,
+      "car_1_independent_of_peer": true,
+      "car_1_origin_fixed_during_motion": true,
+      "car_1_local_forward_distance": true,
+      "car_1_watchdog_brakes": true,
+      "car_2_accepts_drive": true,
+      "car_2_independent_of_peer": true,
+      "car_2_origin_fixed_during_motion": true,
+      "car_2_local_forward_distance": true,
+      "car_2_watchdog_brakes": true,
+      "car_1_steering_angle_direction": true,
+      "car_1_steering_does_not_move_peer": true,
+      "car_1_steering_test_no_contacts": true,
+      "car_2_steering_angle_direction": true,
+      "car_2_steering_does_not_move_peer": true,
+      "car_2_steering_test_no_contacts": true,
+      "zero_speed_with_steering_does_not_drive": true,
+      "pause_blocks_commands": true,
+      "resume_clears_queued_commands": true,
+      "invalid_command_brakes": true,
+      "reset_restores_grid": true,
+      "reset_rezeros_local_xy": true,
+      "reset_increments_epoch": true
+    },
+    "measurements": {
+      "starting_local_xy": {
+        "1": [
+          -0.0019900000008388256,
+          -0.0009014669981467157
+        ],
+        "2": [
+          -0.0019883999990746586,
+          -0.0009937000018519358
+        ]
+      },
+      "starting_map_xy": {
+        "1": [
+          -10.00199,
+          0.5740987
+        ],
+        "2": [
+          -10.0019884,
+          -0.8259935
+        ]
+      },
+      "lidar_1_no_return_beams": 141,
+      "lidar_2_no_return_beams": 142,
+      "lidar_1_on_1": 0,
+      "lidar_1_on_2": 21,
+      "lidar_2_on_1": 21,
+      "lidar_2_on_2": 0,
+      "car_1_command_distance_m": 0.6375163056789134,
+      "car_2_command_distance_m": 0.6375197109881784,
+      "car_1_steering_test": {
+        "command_speed_mps": 0.45,
+        "command_steering_angle_rad": 0.18,
+        "yaw_change_rad": 0.33286157356518775,
+        "lateral_displacement_m": 0.16389520000000002
+      },
+      "car_2_steering_test": {
+        "command_speed_mps": 0.45,
+        "command_steering_angle_rad": -0.18,
+        "yaw_change_rad": -0.341212568641521,
+        "lateral_displacement_m": -0.16953039999999997
+      }
+    },
+    "command_subscriptions": {
+      "/car_1/drive": [
+        "ackermann_msgs/msg/AckermannDriveStamped"
+      ],
+      "/car_2/drive": [
+        "ackermann_msgs/msg/AckermannDriveStamped"
+      ]
+    }
+  },
+  "sensor_check": {
+    "passed": true,
+    "host_domain": 32,
+    "teams": {
+      "1": {
+        "scan": {
+          "received": 99,
+          "unique_samples": 99,
+          "frame": "car_1/lidar",
+          "last_stamp": [
+            296,
+            259993378
+          ],
+          "beams": 1081,
+          "range_max": 5.0,
+          "no_return_beams": 141,
+          "finite_max": 4.991356372833252
+        },
+        "odom": {
+          "received": 248,
+          "unique_samples": 248,
+          "frame": "car_1/odom",
+          "last_stamp": [
+            296,
+            279993378
+          ],
+          "child_frame": "car_1/base_link",
+          "position": [
+            -0.0019900000008325853,
+            -0.0008947669981466896,
+            -0.0793932304
+          ],
+          "position_in_map": [
+            -10.00199,
+            0.5741054,
+            -0.0032957903999999982
+          ]
+        },
+        "camera/image_raw": {
+          "received": 50,
+          "unique_samples": 50,
+          "frame": "car_1/front_camera_optical_frame",
+          "last_stamp": [
+            296,
+            219993379
+          ],
+          "size": [
+            320,
+            240
+          ]
+        },
+        "camera/camera_info": {
+          "received": 50,
+          "unique_samples": 50,
+          "frame": "car_1/front_camera_optical_frame",
+          "last_stamp": [
+            296,
+            219993379
+          ],
+          "size": [
+            320,
+            240
+          ]
+        }
+      },
+      "2": {
+        "scan": {
+          "received": 99,
+          "unique_samples": 99,
+          "frame": "car_2/lidar",
+          "last_stamp": [
+            296,
+            259993378
+          ],
+          "beams": 1081,
+          "range_max": 5.0,
+          "no_return_beams": 142,
+          "finite_max": 4.96380615234375
+        },
+        "odom": {
+          "received": 248,
+          "unique_samples": 248,
+          "frame": "car_2/odom",
+          "last_stamp": [
+            296,
+            279993378
+          ],
+          "child_frame": "car_2/base_link",
+          "position": [
+            -0.001988399999079176,
+            -0.0009888500018518796,
+            -0.0793931745
+          ],
+          "position_in_map": [
+            -10.0019884,
+            -0.82598865,
+            -0.0032957903999999982
+          ]
+        },
+        "camera/image_raw": {
+          "received": 49,
+          "unique_samples": 49,
+          "frame": "car_2/front_camera_optical_frame",
+          "last_stamp": [
+            296,
+            159993380
+          ],
+          "size": [
+            320,
+            240
+          ]
+        },
+        "camera/camera_info": {
+          "received": 49,
+          "unique_samples": 49,
+          "frame": "car_2/front_camera_optical_frame",
+          "last_stamp": [
+            296,
+            159993380
+          ],
+          "size": [
+            320,
+            240
+          ]
+        }
+      }
+    },
+    "checks": {
+      "map_and_clock_received": true,
+      "one_map_publisher": true,
+      "one_clock_publisher": true,
+      "/car_1/scan_received": true,
+      "/car_1/scan_tf": 1,
+      "/car_1/scan_frame": true,
+      "/car_1/scan_beams": true,
+      "/car_1/scan_5m_limit": true,
+      "/car_1/scan_valid_returns": true,
+      "/car_1/scan_horizontal_plane": true,
+      "/car_1/odom_received": true,
+      "/car_1/odom_tf": 1,
+      "/car_1/odom_frame": true,
+      "/car_1/odom_body_tf": 1,
+      "/car_1/odom_pose_matches_map_tf": true,
+      "/car_1/camera/image_raw_received": true,
+      "/car_1/camera/image_raw_tf": 1,
+      "/car_1/camera/image_raw_frame": true,
+      "/car_1/camera/camera_info_received": true,
+      "/car_1/camera/camera_info_tf": 1,
+      "/car_1/camera/camera_info_frame": true,
+      "/car_2/scan_received": true,
+      "/car_2/scan_tf": 1,
+      "/car_2/scan_frame": true,
+      "/car_2/scan_beams": true,
+      "/car_2/scan_5m_limit": true,
+      "/car_2/scan_valid_returns": true,
+      "/car_2/scan_horizontal_plane": true,
+      "/car_2/odom_received": true,
+      "/car_2/odom_tf": 1,
+      "/car_2/odom_frame": true,
+      "/car_2/odom_body_tf": 1,
+      "/car_2/odom_pose_matches_map_tf": true,
+      "/car_2/camera/image_raw_received": true,
+      "/car_2/camera/image_raw_tf": 1,
+      "/car_2/camera/image_raw_frame": true,
+      "/car_2/camera/camera_info_received": true,
+      "/car_2/camera/camera_info_tf": 1,
+      "/car_2/camera/camera_info_frame": true
+    },
+    "seconds": 5.016080046996649,
+    "topics": [
+      "/car_1/camera/camera_info",
+      "/car_1/camera/image_raw",
+      "/car_1/drive",
+      "/car_1/odom",
+      "/car_1/scan",
+      "/car_1/status",
+      "/car_1/vehicle_parameters",
+      "/car_2/camera/camera_info",
+      "/car_2/camera/image_raw",
+      "/car_2/drive",
+      "/car_2/odom",
+      "/car_2/scan",
+      "/car_2/status",
+      "/car_2/vehicle_parameters",
+      "/clock",
+      "/map",
+      "/map_updates",
+      "/parameter_events",
+      "/rosout",
+      "/tf",
+      "/tf_static"
+    ]
+  },
+  "map_check": {
+    "passed": true,
+    "map_matches_package": true,
+    "blocks": 12,
+    "rviz_subscriptions": {
+      "/car_1/scan": [
+        {
+          "node": "rviz_student",
+          "reliability": "ReliabilityPolicy.BEST_EFFORT"
+        }
+      ],
+      "/car_1/odom": [
+        {
+          "node": "rviz_student",
+          "reliability": "ReliabilityPolicy.BEST_EFFORT"
+        }
+      ],
+      "/car_1/camera/image_raw": [
+        {
+          "node": "rviz_student",
+          "reliability": "ReliabilityPolicy.BEST_EFFORT"
+        }
+      ],
+      "/car_2/scan": [
+        {
+          "node": "rviz_student",
+          "reliability": "ReliabilityPolicy.BEST_EFFORT"
+        }
+      ]
+    }
+  },
+  "offline_centerline_geometry": {
+    "file": "config/centerline.csv",
+    "frame_id": "map",
+    "unchanged": true,
+    "sha256": "bd91e816c4a72486c734b052113d81f8eaba024615bc75f5a743f717172641d0",
+    "unique_points": 2362,
+    "length_m": 236.1679969743997,
+    "waypoints_inside_fixed_blocks": 77,
+    "note": "Reference waypoints; blocked or insufficient-clearance points must be skipped as goals.",
+    "columns": [
+      "x_m",
+      "y_m",
+      "w_tr_right_m",
+      "w_tr_left_m"
+    ],
+    "header_commented": true,
+    "closing_row_repeats_start": true,
+    "rows": 2363,
+    "width_basis": "nominal main-road corridor",
+    "nominal_half_width_m": 1.5
+  },
+  "road_and_trap_geometry": {
+    "unchanged_from_track_sha256": "ec4918e3cbe11bb6e9e953a80f1aff2db7cc7ae6e222f6578905e29aace1f838",
+    "verified_unchanged_fields": {
+      "centerline": true,
+      "grid": true,
+      "gates": true,
+      "geometry": true,
+      "starting_area": true,
+      "training": true
+    },
+    "note": "The previous dead-end behavior check used the track without static obstacles. This release rechecks physical bypasses for all 12 static blocks."
+  },
+  "staged_first_launch": {
+    "passed": true,
+    "status_message_package_built_on_first_launch": true,
+    "system_ros_build_dependencies_used": true,
+    "automatic_driving_controllers": false,
+    "rviz_opened_and_sensor_qos_checked": true
+  },
+  "unity_rebuild_required": false,
+  "student_guide": {
+    "file": "AUTODROME_ACKERMANN.md",
+    "sha256": "f7763bb5f8107109c8f80ed2395e01a333c22f746a7c6d76c4de24e3fc646980",
+    "original_preserved_outside_archive": true,
+    "original_sha256": "baba5880a91298d43c7d05fdf61181c3b3416f14a7c1a0b225902fc405fb8b5a",
+    "obsolete_readme_and_html_removed": true
+  },
+  "student_runtime_sha256": {
+    "student_kit/app/autodrome_practice/__init__.py": "995d413943124cdc5c90f2d45a6c533a7c62479b23de31831f374a55ddb9144d",
+    "student_kit/app/autodrome_practice/bridge.py": "e8bdd8349cea6c6523e2f6ec8aa5d4ca3596adb44d5c7fde206e046e94564508",
+    "student_kit/app/autodrome_practice/control.py": "f8846362b8e0188b408237e3cdf973e734cfb94b205529f60dc9704bd363e334",
+    "student_kit/app/autodrome_practice/launcher.py": "3261cc08fe32265666163880fb3bf6adb0dab148a781cf1087836ac4ac613e99",
+    "student_kit/app/autodrome_practice/odometry.py": "60f7511df70a2b7c34e631e8455c1cb0a73bd859a33eccfce718dca78c3b5fb8",
+    "student_kit/app/autodrome_practice/protocol.py": "78eb8668219d53f4da521a3bee43cba8fd60707243f4a05ad8685adfa49a759a",
+    "student_kit/app/autodrome_practice/sensors.py": "73ac2d3c2c479f614dcdea1ff571b3601f3d4bb52d6395f53c71f1623ad0c26b",
+    "student_kit/app/autodrome_practice/session.py": "06dccfc2ef59311753cf9607db86ca39802c8b185e9d120dc2a6212f587abc26"
+  }
+}
