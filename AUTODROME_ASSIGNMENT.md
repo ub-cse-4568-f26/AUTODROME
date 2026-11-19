@@ -373,7 +373,7 @@ Keep the extracted kit in the VM's home directory. Shared folders may cause exec
 
 ### 2. Extract and launch
 
-Place the provided `AUTODROME.zip` archive and `AUTODROME.zip.sha256` checksum file in `~/Downloads`, then extract the kit into `~/AUTODROME_Driver`:
+Place the provided [AUTODROME.zip](https://buffalo.box.com/s/vb22uy93v7ept97a2f36n7aap24el66m) archive and `AUTODROME.zip.sha256` checksum file in `~/Downloads`, then extract the kit into `~/AUTODROME_Driver`:
 
 ```bash
 cd ~/Downloads
